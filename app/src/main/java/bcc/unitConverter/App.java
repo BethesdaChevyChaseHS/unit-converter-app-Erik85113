@@ -23,7 +23,7 @@ public class App {
         // fourth is vertical gap
         // when you add your new converter calculators, you will want to change the row
         // number from 1 to 2/3
-        frame.setLayout(new GridLayout(1, 4, 5, 5));
+        frame.setLayout(new GridLayout(3, 4, 5, 5));
 
         JLabel inputLabel1 = new JLabel("Fahrenheit:");
         JTextField inputField1 = new JTextField();
@@ -54,17 +54,88 @@ public class App {
             }
         });
 
+
+        //add your other rows to the frame here
+
+        //you will also want to change the size of the frame when you add more rows
+        
+ JLabel inputLabel2 = new JLabel("Celsius:");
+        JTextField inputField2 = new JTextField();
+        JButton convertButton2 = new JButton("Convert");
+        JLabel outputLabel2 = new JLabel("Farenheit: ");
+
+        // the below code uses what is called a try catch statatement.
+        // if the code within the try block throws an error, the code within the catch
+        // block will be executed
+        // In this case, if the user inputs something that is not a number, parseDouble
+        // will throw an error
+        // If the user inputs something that is not a number, now instead of crashing,
+        // instead they will get an error message.
+        // try this out!
+        convertButton2.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double celsius = Double.parseDouble(inputField2.getText());
+                    double Farenheit = (celsius ) * 9 / 5 + 32;
+                    // the user likely doesn't want a 15 digit print out of the conversion
+                    //String.format allows you to format the output of a string to something more readable
+                    // in this case, we are formatting it to 2 decimal places
+                    // learn more at https://www.w3schools.com/java/ref_string_format.asp
+                    outputLabel2.setText(String.format("Farenheit: %.2f", Farenheit));
+                } catch (NumberFormatException ex) {
+                    outputLabel2.setText("Farenheit: Invalid input");
+                }
+            }
+        });
+ JLabel inputLabel3 = new JLabel("Money:");
+        JTextField inputField3 = new JTextField();
+        JButton convertButton3 = new JButton("Convert");
+        JLabel outputLabel3 = new JLabel("Bread: ");
+
+        // the below code uses what is called a try catch statatement.
+        // if the code within the try block throws an error, the code within the catch
+        // block will be executed
+        // In this case, if the user inputs something that is not a number, parseDouble
+        // will throw an error
+        // If the user inputs something that is not a number, now instead of crashing,
+        // instead they will get an error message.
+        // try this out!
+        convertButton3.addActionListener(new ActionListener() {
+            public void actionPerformed(ActionEvent e) {
+                try {
+                    double Money = Double.parseDouble(inputField3.getText());
+                    double bread = (Money ) / 2.50;
+                    // the user likely doesn't want a 15 digit print out of the conversion
+                    //String.format allows you to format the output of a string to something more readable
+                    // in this case, we are formatting it to 2 decimal places
+                    // learn more at https://www.w3schools.com/java/ref_string_format.asp
+                    outputLabel3.setText(String.format("Bread: %.2f", bread));
+                } catch (NumberFormatException ex) {
+                    outputLabel3.setText("Bread: Invalid input");
+                }
+            }
+        });
+
         frame.add(inputLabel1);
         frame.add(inputField1);
         frame.add(convertButton1);
         frame.add(outputLabel1);
 
-        //add your other rows to the frame here
 
-        //you will also want to change the size of the frame when you add more rows
-        frame.setSize(500, 80);
+        frame.add(inputLabel2);
+        frame.add(inputField2);
+        frame.add(convertButton2);
+        frame.add(outputLabel2);
+
+        frame.add(inputLabel3);
+        frame.add(inputField3);
+        frame.add(convertButton3);
+        frame.add(outputLabel3);
+
+        frame.setSize(500, 500);
         frame.setLocationRelativeTo(null);
         frame.setVisible(true);
     }
+
 
 }
